@@ -14,4 +14,4 @@ git commit -m "Added I love Git"
 git checkout main
 git merge intro
 git tag -a v1
-git push OSC_Linux_SummerTraining_Tasks --all
+git push -u origin main
