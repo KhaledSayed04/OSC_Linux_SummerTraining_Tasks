@@ -1,2 +1,2 @@
-grep -Eioh "([[:alnum:]_.-]+@[[:alnum:]_.-]+?\.[[:alpha:].]{2,6})" info.csv | s>
+grep -Eioh "([[:alnum:]_.-]+?@[[:alnum:]_.-]+?\.[[:alpha:]_.-]+?)" info.csv | sort | uniq > emails.txt
 ps -e -o pid,cmd --sort=cmd >> processes.txt
