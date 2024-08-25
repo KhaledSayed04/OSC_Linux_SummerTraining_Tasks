@@ -1,0 +1,2 @@
+grep -Eioh "([[:alnum:]_.-]+@[[:alnum:]_.-]+?\.[[:alpha:].]{2,6})" info.csv | s>
+ps -e -o pid,cmd --sort=cmd >> processes.txt
