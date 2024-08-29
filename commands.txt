@@ -1,0 +1,114 @@
+Session 1
+--
+1.pwd #print working directory
+2.ls #list the content of the direcotry -1 each element at line -a print all files -l print long list (details)
+3.cd #change direcotry
+4.clear
+5.whoami
+6.date
+7.history
+8.mkdir
+9.touch
+10.echo "text"
+11.mv (file_old_path) (file_new_path) #to change file_name use it to move the file to the same directory with the new name
+12.cp (origin_file_path) (copy_path) -r recursively (to copy a directory with all of its content
+13.rmdir #delete empty dir
+rm #delete file -r for dir
+14.cat (file_path) #reads the named file content
+15.head (file_path) # -num to show first num lines
+16.tail (file_path) # -num to show last num lines
+17.file (file_path) #gives a description of the type of the specified file
+18.man (command) #opens manual (guide) for the specified command
+~19.(command) --help #option that basic usage info 
+20.whatis (command) #gives one-line manual description
+21.nano/gedit (file_path) #text editors
+========================
+Session 2
+--
+1.git init #create a new sub-directory named .git that contains all of your necessary repo files
+2.git add (added) #added is either file(s), pattern(s): ".txt", ".cpp", or -A --all . * (adds all not tracked files
+3.git rm --cached (removed) #--cached option removes changes only from the stanging area
+4.git status #-s in short format
+5.git commit -m "comment"
+6.git log #--oneline : short representation (commit code and message) #--graph : graphical representation 
+7.git tag -a (release-title) #-a : annotated
+8.git tag (tag-name) (commit-code) #lightweight tag
+9.git tag #list all tags you made
+10.git show (tag-name) #list all info about the specified tag
+11.git clean #removes untracked files from the working directory. -i : interactive -f (file or will delete all untracked files) -n : (same as --dry-run)
+12.git restore (file) #removes all untracked changes from the working directory. helps with the modified files (are those that have been changed since the last commit but the new changes haven't been staged or committed yet.)
+13.git reset HEAD (file-name) #same as (git restore --staged (file-name))
+14.git reset --hard (commit-code / HEAD~[1-..])
+15.git branch (branch-name) & git checkout (branch-name) == git checkout -b (branch-name) [#create and move] == git switch -c (branch-name)
+16.git branch #list #-m (new-name) : rename #-d (branch-name) : delete a branch that has no commits #-D (branch-name) : delete a branch that has commits
+17. 
+git checkout main 
+git merge (branch-name)
+#if there are conflicts, Git will stop the merge and indicate the files with conflicts => resolve conflicts => commit => try again
+18.
+git checkout (feature-name)
+git rebase main
+#if there are conflicts, Git will stop the merge and indicate the files with conflicts => resolve conflicts => commit => try again
+git checkout main
+git merge (feature-name)
+19.
+git push -u origin main
+========================
+Session 3
+--
+1.find [options] [path] [expression] #find ~ -mtime -7
+2. gzip/bzip2 [options] [file-name] #compresses the file, adds ".gz" or ".bz2" suffix, and by default deletes the original file # -1 : -9 .. set amount of compression. range from 1 (fastest, least compression) to 9 (slowest, most compression). Default value is 6 # gunzip bunzip2
+3. zip [archive-name.zip] [file1 file2 ..] #archive and compress #unzip
+4. tar [options] [archive-file-name] [file or dir to be archived]
+5. tar -tvf (archive.tar) #list the content of the archive without extracting
+
+## act with links as pointers
+
+6. ln -s (file_path) (link_path) #-s : soft link (if the original file is deleted, the soft link becomes a dangling link -broken), can link to directories
+
+7. ln (file_path) (link_path) #can't link to directories (on most file systems), if the original file is deleted, the hard link still access to the file content
+
+8. unlink (link_path) #for simple, single-file deletion #use rm for others
+
+9. echo "Hello, World!" | tee >(wc -w) #display the output of the command and send it to the file 
+========================
+Session 4 : 
+--
+1. id [username] #show info about the user #default is the currently logged-in user 
+2. useradd [options] (username) # -m : isolated home, else be based on the current user home
+3. passwd (username)
+4. su (username)
+5. userdel [options] (username) # -r : delete the home dir of the user
+6. groupadd [options] (groupname)
+7. usermod [options] (groupname) (username) # -a : append mode, else the user will be removed from all other groups # -G add user to supplementary group
+8. groupdel (groupname)
+9. chmod u+x (filename) # Symbolic Mode u/g/o +/- w/r/x
+10. chmod 777 (filename) # Absolute Mode u-g-o, r = 4, w = 2, x = 1
+11. chown (owner)[:[group]] (filename) 
+12. chgrp (groupname) (filename)
+13. groups [username] #list all groups that user is a member of
+========================
+Session 5 :
+--
+Part 1 (Text Processing):
+# . any single character, ^ start of string, $ end of string
+1. grep [option] [text] [file] # -Eioh # \{n\} \{n, \} \{,m\} \{n,m\} [1-6] [123] [a-z] [a-z0-9A-Z] [[:classname:]] 
+# classname : alnum, alpha, digit, lower, upper, punct, space, print (printable including alnum, punct, and space)
+# \b match the empty string at the edge of a word
+# \B match the string provided it's not at the edge of a word
+# grouping \(text\) => grep "\(abc\)\{2\}" matches abcabc
+2. cut option (filename)
+3. sort (option) (filename)
+4. uniq [option] (inputfile) (outputfile)
+Part 2 (Processes):
+1. top
+2. ps -e #show processes # -e : all processes # -o : chose fields # -f : more detailed
+3. pgrep [option] pattern
+4. pstree #restricts the view to processes in the current shell
+5. jobs #list jobs of the current shell
+6. (command) & #run as background process
+7. fg %(job_id) #bring a background or stopped (suspended) process to the foreground
+8. bg %(job_id) #resume a suspended process in the background
+9. kill [signal] (Process_id) # -9 kill (terminate immediately) -15 soft kill (whenever) -19 stop -18 resume (continue)
+10. pkill [options] pattern # -n signal (default is 15) -u for specified user
+
